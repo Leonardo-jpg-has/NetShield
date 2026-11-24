@@ -1,8 +1,4 @@
--- NetShield · Base de datos (modelo del Sprint 3: 5 tablas)
--- Es seguro ejecutarlo varias veces: usa IF NOT EXISTS y NO borra nada.
---
---   usuario 1 --- N contenido_sospechoso 1 --- N analisis_ia N --- 1 metrica_calidad
---                                                analisis_ia 1 --- 0..1 retroalimentacion
+
 CREATE DATABASE IF NOT EXISTS netshield CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
 USE netshield;
 
@@ -49,19 +45,9 @@ CREATE TABLE IF NOT EXISTS analisis_ia (
 -- 5) RETROALIMENTACION (botón Correcto / Incorrecto)
 CREATE TABLE IF NOT EXISTS retroalimentacion (
   id_feedback       INT AUTO_INCREMENT PRIMARY KEY,
-  id_analisis       INT NOT NULL UNIQUE,                   -- UNIQUE = relación 1 a (0 o 1)
+  id_analisis       INT NOT NULL UNIQUE,                  
   veredicto_usuario ENUM('Correcto','Incorrecto') NOT NULL,
   fecha             DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
   FOREIGN KEY (id_analisis) REFERENCES analisis_ia(id_analisis)
 );
 
--- NOTA: la pagina agrega sola (la primera vez) un usuario "Normal" y una fila de metrica_calidad.
--- Las tablas analisis_historial y feedback_analisis de la version anterior ya no se usan;
--- si existen en tu base puedes dejarlas (no estorban).
-
--- OPCIONAL: usuario de solo lectura para el agente (luego ponlo en DB_RO_USER / DB_RO_PASS de config.php)
--- CREATE USER IF NOT EXISTS 'netshield_ro'@'localhost' IDENTIFIED BY 'cambia_esta_clave';
--- GRANT SELECT ON netshield.analisis_ia TO 'netshield_ro'@'localhost';
--- GRANT SELECT ON netshield.contenido_sospechoso TO 'netshield_ro'@'localhost';
--- GRANT SELECT ON netshield.retroalimentacion TO 'netshield_ro'@'localhost';
--- FLUSH PRIVILEGES;
