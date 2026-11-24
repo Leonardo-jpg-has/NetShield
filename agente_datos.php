@@ -1,10 +1,4 @@
 <?php
-// NetShield · Ruta de SOLO LECTURA para el agente de IA.
-//  - Usa una conexión aparte, en modo solo lectura (SET SESSION TRANSACTION READ ONLY).
-//  - Solo consultas SELECT preparadas sobre las tablas del modelo del Sprint 3: analisis_ia, contenido_sospechoso y retroalimentacion
-//    (usuario y metrica_calidad las escribe api.php; aquí no se leen).
-//  - El agente NO escribe SQL: solo puede pedir consultas de una lista fija, con parámetros validados.
-//  Uso directo (GET): agente_datos.php?consulta=resumen|historial|feedback|analisis
 require_once 'config.php';
 
 const NS_NIVELES = ['RIESGO ALTO', 'RIESGO MEDIO', 'SEGURO'];
