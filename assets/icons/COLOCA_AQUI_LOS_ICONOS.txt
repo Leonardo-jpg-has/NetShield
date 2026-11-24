@@ -1,0 +1,10 @@
+Copia aqui tus PNG pixelados con estos nombres EXACTOS (sin cambiar mayusculas):
+preguntando.png  (boton Ayuda)
+luna.png         (tema oscuro activo)
+sol.png          (tema claro activo)
+celular.png      (pestana SMS)
+correo.png       (pestana Correo)
+camara.png       (zona "Subir captura para OCR")
+pulgar_arriba.png (boton Correcto)
+pulgar_abajo.png  (boton Incorrecto)
+Sin los PNG la pagina funciona igual; solo se ven cuadros vacios donde van los iconos.
